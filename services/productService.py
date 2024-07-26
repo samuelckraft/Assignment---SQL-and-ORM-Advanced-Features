@@ -28,3 +28,7 @@ def find_all():
     query = select(Product)
     products = db.session.execute(query).scalars().all()
     return products
+
+def find_all_pagination(page=1, per_page=10):
+    products = db.paginate(select(Product), page=page, per_page=per_page)
+    return products
